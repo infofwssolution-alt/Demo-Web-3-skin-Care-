@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Formulations | Minimalist</title>
+  <meta name="description" content="Explore our full collection of 14 biocompatible minimalist skincare formulations.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background-color: var(--color-bg-light);">
+
+  <!-- Top-Center Toast -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Header Navigation -->
+  <header class="top-header header-light">
+    <div class="container header-inner">
+      <a href="index.html" class="header-brand-logo">Minimalist</a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="about.html" class="nav-link">About &amp; Science</a>
+        <a href="contact.html" class="nav-link">Stores &amp; FAQ</a>
+      </nav>
+
+      <div class="header-right">
+        <button id="cart-toggle-btn" class="cart-btn" aria-label="Open Shopping Bag">
+          <span>Bag</span>
+          <span class="cart-badge">1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Shop Header -->
+  <section style="padding: 60px 0 30px; border-bottom: 1px solid var(--color-border); background-color: #FFFFFF;">
+    <div class="container">
+      <span class="bracket-tag">[ ALL PRODUCTS • 14 FORMULAS ]</span>
+      <h1 style="font-size: 3rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 12px;">
+        Skincare Catalog
+      </h1>
+      <p style="font-size: 0.9375rem; color: var(--color-text-muted); max-width: 600px;">
+        Targeted active complexes designed without fragrance, parabens, or unnecessary fillers. Filter by category or skin concern.
+      </p>
+
+      <!-- Category Tabs (As seen in 'Skin / Hair / Body / All Products' in the design) -->
+      <div class="heroes-categories-list" style="margin-top: 36px; margin-bottom: 0;">
+        <div class="heroes-cat-item active" data-filter="all">All Formulations <span>14</span></div>
+        <div class="heroes-cat-item" data-filter="cleanser">Cleansers <span>2</span></div>
+        <div class="heroes-cat-item" data-filter="serum">Serums <span>4</span></div>
+        <div class="heroes-cat-item" data-filter="moisturizer">Moisturizers <span>2</span></div>
+        <div class="heroes-cat-item" data-filter="sunscreen">Sunscreens <span>2</span></div>
+        <div class="heroes-cat-item" data-filter="mask">Masks <span>2</span></div>
+        <div class="heroes-cat-item" data-filter="sets">Curated Sets <span>2</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skin Concerns Filter Row -->
+  <section style="padding: 24px 0; background-color: var(--color-bg-light); border-bottom: 1px solid var(--color-border);">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-light);">Concern:</span>
+        <button class="concern-pill-btn active" data-concern="all">All Concerns</button>
+        <button class="concern-pill-btn" data-concern="Acne-prone">Acne-Prone</button>
+        <button class="concern-pill-btn" data-concern="Dry skin">Dry Skin</button>
+        <button class="concern-pill-btn" data-concern="Oily skin">Oily Skin</button>
+        <button class="concern-pill-btn" data-concern="Sensitive">Sensitive</button>
+        <button class="concern-pill-btn" data-concern="Anti-aging">Anti-Aging</button>
+        <button class="concern-pill-btn" data-concern="Dullness">Dullness</button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="catalog-sort" style="font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-light);">Sort:</label>
+        <select id="catalog-sort" style="padding: 6px 12px; font-size: 0.8125rem; border: 1px solid var(--color-border); border-radius: 4px; background: #fff; cursor: pointer;">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Alphabetical: A-Z</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .concern-pill-btn {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .concern-pill-btn:hover {
+      border-color: var(--color-text-main);
+      color: var(--color-text-main);
+    }
+    .concern-pill-btn.active {
+      background-color: var(--color-dark);
+      border-color: var(--color-dark);
+      color: #FFFFFF;
+    }
+  </style>
+
+  <!-- Catalog Grid -->
+  <section style="padding: 60px 0 100px;">
+    <div class="container">
+      <div id="catalog-grid" class="minimalist-product-grid"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="minimalist-footer">
+    <div class="container">
+      <div class="footer-watermark-title">Minimalist</div>
+
+      <div class="footer-grid-blueprint">
+        <div class="footer-links-col">
+          <a href="about.html" class="footer-link-item">About Us</a>
+          <a href="shop.html" class="footer-link-item">Shop</a>
+          <a href="about.html#science" class="footer-link-item">Technology</a>
+        </div>
+
+        <div class="footer-links-col">
+          <a href="contact.html" class="footer-link-item">Contact Us</a>
+          <a href="#" class="footer-link-item">Instagram</a>
+          <a href="#" class="footer-link-item">Twitter / X</a>
+        </div>
+
+        <div class="footer-bottles-blueprint">
+          <svg viewBox="0 0 260 90" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="25" width="38" height="60" rx="4" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <rect x="22" y="10" width="14" height="15" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <rect x="65" y="15" width="34" height="70" rx="4" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <rect x="75" y="5" width="14" height="10" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <rect x="115" y="35" width="55" height="50" rx="8" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <rect x="110" y="25" width="65" height="10" rx="2" fill="none" stroke="#454D48" stroke-width="1.5"/>
+            <path d="M190 20 L230 20 L220 85 L200 85 Z" fill="none" stroke="#454D48" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Minimalist. All rights reserved.</span>
+        <span>Localhost 5500 Preview</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="product-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay">
+    <div class="cart-drawer" role="dialog">
+      <div class="cart-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em;">Shopping Bag</h3>
+        <button id="cart-close-btn" style="font-size: 1.25rem; color: var(--color-text-muted);">&times;</button>
+      </div>
+
+      <div class="shipping-progress-box">
+        <div id="free-shipping-message" class="shipping-progress-text">
+          Add <strong>$50.00</strong> more to unlock Free Standard Shipping!
+        </div>
+        <div class="progress-track">
+          <div id="shipping-progress-bar" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-body"></div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-line">
+          <span>Shipping</span>
+          <span style="font-weight: 600;">Calculated at checkout</span>
+        </div>
+        <div class="cart-summary-line total">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="btn-checkout">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATBOT WIDGET INTEGRATION -->
+  <script src="REPLACE_WITH_BACKEND_URL/widget/widget.js"
+          data-api-url="REPLACE_WITH_BACKEND_URL"
+          data-client-id="skincare-demo"
+          data-title="Veloura Skin Assistant"
+          data-greeting="Hi! I can help you find the right products for your skin. What's your skin type or main concern?"
+          data-color="#7C9A82"
+          defer></script>
+
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentCategory = "all";
+      let currentConcern = "all";
+      let currentSort = "featured";
+
+      const grid = document.getElementById("catalog-grid");
+      const catItems = document.querySelectorAll(".heroes-cat-item");
+      const concernBtns = document.querySelectorAll(".concern-pill-btn");
+      const sortSelect = document.getElementById("catalog-sort");
+
+      function renderCatalog() {
+        let list = [...PRODUCTS];
+
+        if (currentCategory !== "all") {
+          list = list.filter(p => p.category.toLowerCase() === currentCategory.toLowerCase());
+        }
+
+        if (currentConcern !== "all") {
+          list = list.filter(p => p.concerns.includes(currentConcern));
+        }
+
+        if (currentSort === "price-asc") list.sort((a,b) => a.price - b.price);
+        if (currentSort === "price-desc") list.sort((a,b) => b.price - a.price);
+        if (currentSort === "name-asc") list.sort((a,b) => a.name.localeCompare(b.name));
+
+        if (list.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border: 1px solid var(--color-border); border-radius: 4px;">
+              <p style="font-weight: 700; margin-bottom: 8px;">No matching formulations found.</p>
+              <p style="font-size: 0.8125rem; color: var(--color-text-muted);">Try adjusting your category or concern filters.</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = list.map(p => `
+          <div class="minimalist-card">
+            <div class="minimalist-visual" onclick="openProductModal('${p.id}')">
+              ${getProductSvg(p.svgType, p.accentColor, p.accentHighlight)}
+            </div>
+            <div class="minimalist-body">
+              <span class="bracket-tag" style="margin-bottom: 4px; font-size: 0.6rem;">[ ${p.categoryLabel.toUpperCase()} ]</span>
+              <div class="minimalist-card-title" onclick="openProductModal('${p.id}')">${p.name}</div>
+              <div class="minimalist-card-size">${p.size}</div>
+              <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px;">
+                ${p.concerns.map(c => `<span style="font-size: 0.65rem; background: var(--color-bg-light); padding: 2px 6px; border-radius: 2px; color: var(--color-text-muted);">${c}</span>`).join("")}
+              </div>
+              <div class="minimalist-card-footer">
+                <span class="minimalist-price">$${p.price}</span>
+                <button onclick="addToCart('${p.id}')" class="minimalist-add-btn">+ Add</button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      catItems.forEach(item => {
+        item.addEventListener("click", () => {
+          catItems.forEach(i => i.classList.remove("active"));
+          item.classList.add("active");
+          currentCategory = item.getAttribute("data-filter");
+          renderCatalog();
+        });
+      });
+
+      concernBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          concernBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentConcern = btn.getAttribute("data-concern");
+          renderCatalog();
+        });
+      });
+
+      if (sortSelect) {
+        sortSelect.addEventListener("change", (e) => {
+          currentSort = e.target.value;
+          renderCatalog();
+        });
+      }
+
+      renderCatalog();
+    });
+  </script>
+</body>
+</html>
