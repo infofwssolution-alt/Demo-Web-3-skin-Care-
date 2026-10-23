@@ -1,0 +1,12 @@
+{
+  "name": "veloura-skin-demo",
+  "version": "1.0.0",
+  "description": "Veloura Skin - Realistic demo e-commerce website for AI chatbot showcase",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 5500 ."
+  },
+  "keywords": ["skincare", "ecommerce", "demo", "chatbot"],
+  "author": "Veloura Skin",
+  "license": "ISC"
+}
