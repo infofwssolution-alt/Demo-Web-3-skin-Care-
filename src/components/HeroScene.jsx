@@ -13,7 +13,7 @@ import { Bottle3D } from "./Bottle3D";
 export default function HeroScene({ scanning, activeId, onSelect }) {
   return (
     <Canvas
-      camera={{ position: [0, 0.35, 6.4], fov: 32 }}
+      camera={{ position: [0, 0.2, 7.2], fov: 32 }}
       dpr={[1, 2]}
       gl={{ antialias: true }}
       fallback={
@@ -25,8 +25,8 @@ export default function HeroScene({ scanning, activeId, onSelect }) {
       }
     >
       <color attach="background" args={["#F4F1EC"]} />
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[3, 5, 4]} intensity={1.4} />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[4, 5, 5]} intensity={1.5} />
 
       <Suspense fallback={null}>
         <PresentationControls
@@ -34,22 +34,25 @@ export default function HeroScene({ scanning, activeId, onSelect }) {
           snap
           cursor
           speed={1.4}
-          rotation={[0.06, -0.2, 0]}
+          rotation={[0.04, -0.15, 0]}
           polar={[-0.25, 0.3]}
           azimuth={[-0.9, 0.9]}
         >
-          <Float speed={1.3} rotationIntensity={0.12} floatIntensity={0.45}>
-            <Bottle3D scanning={scanning} activeId={activeId} onSelect={onSelect} />
+          {/* Enhanced floating with stylish dynamic tilt */}
+          <Float speed={2} rotationIntensity={0.25} floatIntensity={0.6}>
+            <group scale={0.8} rotation={[0.08, 0, 0.22]}>
+              <Bottle3D scanning={scanning} activeId={activeId} onSelect={onSelect} />
+            </group>
           </Float>
         </PresentationControls>
 
-        <ContactShadows position={[0, -1.32, 0]} opacity={0.32} scale={7} blur={2.8} far={3} />
+        <ContactShadows position={[0, -1.35, 0]} opacity={0.35} scale={6} blur={2.4} far={3} />
 
         <Environment resolution={256}>
-          <Lightformer form="rect" intensity={3} position={[0, 5, 2]} scale={[8, 3, 1]} rotation-x={Math.PI / 2} />
+          <Lightformer form="rect" intensity={3.2} position={[0, 5, 2]} scale={[8, 3, 1]} rotation-x={Math.PI / 2} />
           <Lightformer form="rect" intensity={2.2} position={[-5, 1, 1]} scale={[2, 6, 1]} rotation-y={Math.PI / 2} />
           <Lightformer form="rect" intensity={2.2} position={[5, 1, 1]} scale={[2, 6, 1]} rotation-y={-Math.PI / 2} />
-          <Lightformer form="ring" color="#B79CF0" intensity={1.6} position={[0, 0.5, -5]} scale={4} />
+          <Lightformer form="ring" color="#B79CF0" intensity={1.8} position={[0, 0.5, -5]} scale={4} />
         </Environment>
       </Suspense>
     </Canvas>
