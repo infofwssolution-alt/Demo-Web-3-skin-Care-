@@ -215,7 +215,7 @@ export default function App() {
           {/* Bottom bar: active hotspot detail (centered, away from the bottom-right widget) */}
           <div className="mx-auto flex w-full max-w-[1440px] items-end justify-between px-6 pb-8 lg:px-12">
             <div className="hidden items-center gap-2 text-xs text-[#686D6A] sm:flex">
-              <Hand className="h-4 w-4" /> Drag to rotate
+              <Sparkles className="h-4 w-4 text-[#9370DB]" /> Move cursor to rotate &amp; float
             </div>
             <AnimatePresence mode="wait">
               <motion.div

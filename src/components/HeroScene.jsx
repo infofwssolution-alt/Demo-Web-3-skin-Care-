@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 import {
-  PresentationControls,
   Float,
   ContactShadows,
   Environment,
@@ -9,7 +9,34 @@ import {
 } from "@react-three/drei";
 import { Bottle3D } from "./Bottle3D";
 
-/* Full-bleed WebGL hero scene. Lighting uses Lightformers (no HDR download). */
+/* Interactive rig: smoothly steers bottle rotation and position based on mouse hover movement */
+function HoverRig({ children }) {
+  const group = useRef();
+  const { viewport } = useThree();
+
+  useFrame((state, delta) => {
+    if (!group.current) return;
+    // state.pointer holds normalized mouse coords: x from -1 to 1, y from -1 to 1
+    const targetRotY = state.pointer.x * 0.95; // Turn towards cursor
+    const targetRotX = 0.08 - state.pointer.y * 0.45; // Subtle nod with mouse height
+    const targetRotZ = 0.22 - state.pointer.x * 0.15; // Maintain slanted flair
+
+    // Smooth dampening towards cursor position
+    group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, targetRotX, 4, delta);
+    group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, targetRotY, 4, delta);
+    group.current.rotation.z = THREE.MathUtils.damp(group.current.rotation.z, targetRotZ, 4, delta);
+
+    // Subtle horizontal parallax follow
+    const targetPosX = state.pointer.x * 0.35;
+    const targetPosY = state.pointer.y * 0.2;
+    group.current.position.x = THREE.MathUtils.damp(group.current.position.x, targetPosX, 3, delta);
+    group.current.position.y = THREE.MathUtils.damp(group.current.position.y, targetPosY, 3, delta);
+  });
+
+  return <group ref={group}>{children}</group>;
+}
+
+/* Full-bleed WebGL hero scene with cursor-hover responsiveness + 80% slanted bottle */
 export default function HeroScene({ scanning, activeId, onSelect }) {
   return (
     <Canvas
@@ -29,22 +56,15 @@ export default function HeroScene({ scanning, activeId, onSelect }) {
       <directionalLight position={[4, 5, 5]} intensity={1.5} />
 
       <Suspense fallback={null}>
-        <PresentationControls
-          global
-          snap
-          cursor
-          speed={1.4}
-          rotation={[0.04, -0.15, 0]}
-          polar={[-0.25, 0.3]}
-          azimuth={[-0.9, 0.9]}
-        >
+        {/* Cursor hover rig moves and re-orients the bottle as cursor glides over the screen */}
+        <HoverRig>
           {/* Enhanced floating with stylish dynamic tilt */}
-          <Float speed={2} rotationIntensity={0.25} floatIntensity={0.6}>
+          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
             <group scale={0.8} rotation={[0.08, 0, 0.22]}>
               <Bottle3D scanning={scanning} activeId={activeId} onSelect={onSelect} />
             </group>
           </Float>
-        </PresentationControls>
+        </HoverRig>
 
         <ContactShadows position={[0, -1.35, 0]} opacity={0.35} scale={6} blur={2.4} far={3} />
 

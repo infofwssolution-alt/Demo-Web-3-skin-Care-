@@ -2,9 +2,10 @@ import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
+import { HOTSPOTS } from "../data/hotspots";
 
-/* Label texture drawn on a canvas — no font downloads, works offline. */
-function useLabelTexture() {
+/* Front label texture drawn on canvas */
+function useFrontLabelTexture() {
   return useMemo(() => {
     const c = document.createElement("canvas");
     c.width = 1024;
@@ -32,7 +33,62 @@ function useLabelTexture() {
   }, []);
 }
 
-/* Glass body profile, revolved around Y. */
+/* Back label texture drawn on canvas (ingredients, instructions, barcode, certification) */
+function useBackLabelTexture() {
+  return useMemo(() => {
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 512;
+    const ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.textAlign = "center";
+
+    // Header badge
+    ctx.fillStyle = "#9370DB";
+    ctx.font = "700 32px 'Segoe UI', monospace";
+    ctx.fillText("[ BIO-CELLULAR MATRIX · PH 5.4 ]", 512, 90);
+
+    // Brand mark
+    ctx.fillStyle = "#141615";
+    ctx.font = "600 52px Georgia, serif";
+    ctx.fillText("NUVÉ SKIN LABS", 512, 160);
+
+    // Micro active text
+    ctx.fillStyle = "#454D48";
+    ctx.font = "500 26px 'Segoe UI', Arial, sans-serif";
+    ctx.fillText("DIRECTIONS: Apply 3–4 drops AM to cleansed skin. Follow with SPF.", 512, 215);
+
+    ctx.fillStyle = "#6B716D";
+    ctx.font = "400 22px 'Segoe UI', Arial, sans-serif";
+    ctx.fillText("Key Actives: Ethyl Ascorbic Acid, Ferulic Acid, Kakadu Plum, Squalane.", 512, 260);
+
+    // Clean beauty tags
+    ctx.fillStyle = "#2A2E2C";
+    ctx.font = "600 24px 'Segoe UI', Arial, sans-serif";
+    ctx.fillText("100% VEGAN  ·  CRUELTY FREE  ·  FRAGRANCE FREE", 512, 310);
+
+    // Barcode lines
+    const startX = 360;
+    const barY = 350;
+    const barH = 50;
+    ctx.fillStyle = "#202422";
+    for (let i = 0; i < 304; i += 8) {
+      const w = ((i * 17) % 5) + 2;
+      ctx.fillRect(startX + i, barY, Math.min(w, 5), barH);
+    }
+
+    ctx.fillStyle = "#6B716D";
+    ctx.font = "400 18px monospace";
+    ctx.fillText("8 50034 91207 4 · MADE FOR LOCALHOST 5500", 512, 430);
+
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 8;
+    return tex;
+  }, []);
+}
+
+/* Glass body profile, revolved around Y */
 function useBodyGeometry() {
   return useMemo(() => {
     const pts = [
@@ -44,13 +100,12 @@ function useBodyGeometry() {
   }, []);
 }
 
-import { HOTSPOTS } from "../data/hotspots";
-
 export function Bottle3D({ scanning, activeId, onSelect }) {
   const spinRef = useRef();
   const ringRef = useRef();
   const scanT = useRef(0);
-  const label = useLabelTexture();
+  const frontLabel = useFrontLabelTexture();
+  const backLabel = useBackLabelTexture();
   const bodyGeo = useBodyGeometry();
 
   useFrame((_, delta) => {
@@ -72,7 +127,7 @@ export function Bottle3D({ scanning, activeId, onSelect }) {
 
   return (
     <group>
-      {/* Spinning bottle */}
+      {/* Spinning bottle with Front AND Back Labels */}
       <group ref={spinRef}>
         {/* Glass body */}
         <mesh geometry={bodyGeo}>
@@ -105,10 +160,16 @@ export function Bottle3D({ scanning, activeId, onSelect }) {
           <meshPhysicalMaterial color="#ffffff" transmission={1} roughness={0.05} thickness={0.2} />
         </mesh>
 
-        {/* Wrapped label (front arc) */}
+        {/* 1. Wrapped FRONT label (arc facing front) */}
         <mesh position={[0, -0.18, 0]}>
           <cylinderGeometry args={[0.628, 0.628, 0.95, 96, 1, true, -0.85, 1.7]} />
-          <meshStandardMaterial map={label} transparent roughness={0.55} side={THREE.FrontSide} />
+          <meshStandardMaterial map={frontLabel} transparent roughness={0.55} side={THREE.FrontSide} />
+        </mesh>
+
+        {/* 2. Wrapped BACK label (arc facing 180° back so it looks complete when spinning) */}
+        <mesh position={[0, -0.18, 0]}>
+          <cylinderGeometry args={[0.628, 0.628, 0.95, 96, 1, true, Math.PI - 0.85, 1.7]} />
+          <meshStandardMaterial map={backLabel} transparent roughness={0.55} side={THREE.FrontSide} />
         </mesh>
 
         {/* Metal collar */}
@@ -134,7 +195,7 @@ export function Bottle3D({ scanning, activeId, onSelect }) {
         <meshBasicMaterial color="#9370DB" transparent opacity={0} toneMapped={false} />
       </mesh>
 
-      {/* Hotspots anchored in 3D — they follow drag-tilt and float, not the spin */}
+      {/* Hotspots anchored in 3D */}
       {HOTSPOTS.map((h) => {
         const active = h.id === activeId;
         return (
