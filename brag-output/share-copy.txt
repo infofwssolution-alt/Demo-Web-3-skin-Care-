@@ -1,0 +1,13 @@
+# VERSION 1 (Product & Policy Focus)
+Title: Custom AI Skincare Chatbot: Zero Hallucination Store Assistant
+
+Description:
+This demo showcases a custom AI assistant built for an e-commerce skincare brand, connected directly to the store's product catalog and customer care policies. Instead of generating generic advice, it formulates step-by-step routines for specific skin types, checks ingredient compatibility (such as separating Vitamin C and Retinol), and explains returns on opened items. When asked about unlisted topics like international shipping rates, it transparently states it is not sure and routes the customer to human support. Every answer is grounded in your verified store data with zero made-up claims.
+
+---
+
+# VERSION 2 (Client Customization & Safety Focus)
+Title: E-Commerce AI Chatbot: Catalog-Grounded Store Assistant Demo
+
+Description:
+Here is a live demonstration of an AI customer assistant customized specifically for an online skincare store. The assistant only answers from the client's verified product specifications, ingredient contraindications, and return policies. It handles routine recommendations, budget constraints, and gifting questions accurately without hallucinating medical claims. If a customer inquires about out-of-scope policies, it promptly admits it does not know and offers direct contact details.

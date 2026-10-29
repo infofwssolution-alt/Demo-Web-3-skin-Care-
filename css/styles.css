@@ -1200,6 +1200,12 @@ img, svg {
   background-color: #FFFFFF;
 }
 
+@media (max-width: 640px) {
+  .cart-footer {
+    padding-bottom: 90px;
+  }
+}
+
 .cart-summary-line {
   display: flex;
   justify-content: space-between;

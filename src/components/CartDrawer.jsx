@@ -126,7 +126,7 @@ export function CartDrawer({ isOpen, onClose, cart, onUpdateQty, onRemove, onChe
             </div>
 
             {/* Footer Summary */}
-            <div className="p-6 border-t border-[#E5E1D8] bg-white">
+            <div className="p-6 pb-24 sm:pb-6 border-t border-[#E5E1D8] bg-white">
               <div className="flex justify-between items-center text-xs text-neutral-500 mb-2">
                 <span>Shipping</span>
                 <span>{subtotal >= threshold ? "Free" : "Calculated next"}</span>

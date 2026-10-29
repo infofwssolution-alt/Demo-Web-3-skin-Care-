@@ -1,92 +1,83 @@
 # Veloura Skin — 90-Second Screen Recording Demo Script
 
-This script outlines the exact sequence of actions and 6 prompt questions to test during your screen recording showcase. The demo highlights the UI responsiveness, cart interactions, and intelligent conversational retrieval powered by the chatbot assistant.
+This script outlines the exact sequence of actions and the 5 verified prompt questions tested against the live local chatbot backend. The demo highlights the UI responsiveness, cart interactions, and intelligent conversational retrieval powered by the Veloura Skin Assistant.
 
 ---
 
-## Recording Sequence Breakdown
+## Recording Sequence Breakdown (90 Seconds)
 
 | Timecode | Visual Action on Page | Chatbot Interaction | Target Outcome / Verification |
 | :--- | :--- | :--- | :--- |
-| **0:00 – 0:15** | Scroll smoothly from Hero down past "Shop by Concern" to "Product Grid". Click "Acne-prone" concern filter to show responsive grid update. | None yet | Demonstrates premium aesthetics, subtle hover effects, and instant filtering. |
-| **0:15 – 0:25** | Click on "Clear Balance Gel Cleanser" to pop open the Product Detail Modal. Review ingredients, click "Add to Bag", and view slide-out cart drawer. | None yet | Shows product details, accessible modal, quantity adjustments, and free shipping progress. |
-| **0:25 – 0:38** | Close cart drawer. Click the Veloura Skin Assistant widget bubble in the bottom right corner. | **Question 1 (Routine Recommendation)** | Bot recommends the exact morning & evening routine for oily/acne-prone skin. |
-| **0:38 – 0:48** | Keep chat open over the store. | **Question 2 (Budget Constraint)** | Bot lists products strictly under $40 matching the criteria with exact prices. |
-| **0:48 – 0:58** | Stay in chat. | **Question 3 (Ingredient Compatibility)** | Bot explains proper separation of Vitamin C (morning) and Retinol (night). |
-| **0:58 – 1:08** | Stay in chat. | **Question 4 (Open Product Return Policy)** | Bot confirms opened products that caused reactions are returnable within 30 days. |
-| **1:08 – 1:18** | Stay in chat. | **Question 5 (Gift Recommendation)** | Bot suggests the Starter Routine Set ($62) or Acne Care Set ($67). |
-| **1:18 – 1:30** | Stay in chat. End video on customer support handoff. | **Question 6 (Out-of-Scope / Fallback)** | Bot admits it doesn't have shipping rates for Germany / points info and offers handoff to team. |
+| **0:00 – 0:15** | Scroll smoothly across homepage. Interact with 3D product visual, inspect texture and bioactive formulas. | None yet | Demonstrates rich aesthetics, responsive design, and smooth interactions. |
+| **0:15 – 0:28** | Click "Add to Bag" on a product. Observe slide-out cart drawer, dynamic free-shipping progress meter, and close drawer. | None yet | Verifies cart drawer functionality and ensures bottom-right widget launcher remains fully visible and unobstructed. |
+| **0:28 – 0:42** | Click the Veloura Skin Assistant widget bubble in the bottom right corner. Panel expands smoothly. | **Question 1 (Budget & Skin Type)**<br>`"I have oily, acne-prone skin and a budget of $40. What should I use?"` | Bot recommends Clear Balance Gel Cleanser ($19), Calm Niacinamide ($28), Clay Reset Mask ($24), or Weightless Water Gel ($29), providing a clear starter plan under $40. |
+| **0:42 – 0:54** | Stay in chat. | **Question 2 (Ingredient Compatibility)**<br>`"Can I use the vitamin C serum together with retinol?"` | Bot clarifies not to use them together: Glow Vitamin C in AM with SPF, Renew Retinol 0.3% in PM. |
+| **0:54 – 1:06** | Stay in chat. | **Question 3 (Return Policy on Opened Item)**<br>`"What's your return policy if I already opened a product?"` | Bot confirms 30-day returns for adverse reactions, pre-paid return shipping label, and 5–7 business days refund. |
+| **1:06 – 1:18** | Stay in chat. | **Question 4 (Gifting Under $35)**<br>`"What would be a good gift under $35?"` | Bot suggests Overnight Dew Mask ($31), Glow Vitamin C Serum ($34), and Mineral Sheer SPF 30 ($27) with exact pricing. |
+| **1:18 – 1:30** | Stay in chat. Conclude video showing seamless human escalation. | **Question 5 (Out-of-Scope / Fallback)**<br>`"Do you ship to Canada?"` | Bot recognizes international shipping is outside local policy, replies with graceful handoff ("I’m not sure, let me get you in touch with the team"), and renders the in-chat contact form. |
 
 ---
 
-## 6 Realistic Chatbot Questions & Verification Checklist
+## 5 Verified Chatbot Questions & Confirmed Bot Answers
 
-### 1. Routine Recommendation Question
+### 1. Budget-Constrained Routine Question
 * **User Prompt:**
-  > "I have oily, acne-prone skin that gets shiny by noon. What routine do you recommend?"
-* **Expected Bot Answer Details:**
-  - Cleanser: **Clear Balance Gel Cleanser** ($19)
-  - Active/Treatment: **Calm Niacinamide 10% Serum** ($28)
-  - Moisturizer: **Weightless Water Gel** ($29)
-  - Sunscreen: **Daily Shield SPF 50 Fluid** ($26)
-  - Optional weekly detox: **Clay Reset Mask** ($24)
-  - May mention the **Acne Care Set** ($67) which includes the three core daily items.
+  > "I have oily, acne-prone skin and a budget of $40. What should I use?"
+* **Confirmed Live Bot Response:**
+  - Identifies single-product options under $40:
+    - **Clear Balance Gel Cleanser**: **$19** (gently removes excess oil and clears pores)
+    - **Calm Niacinamide 10% Serum**: **$28** (reduces shine and calms redness)
+    - **Clay Reset Mask**: **$24** (weekly detox to absorb oil)
+    - **Weightless Water Gel**: **$29** (light, hydrating oil-free moisturizer)
+  - Proposes starting with **Clear Balance Gel Cleanser** ($19) as the essential first step, comfortably within budget.
 
 ---
 
-### 2. Budget-Constrained Question ("under $40")
+### 2. Ingredient Compatibility Question
 * **User Prompt:**
-  > "I want an effective anti-aging or brightening night serum under $40. What do you have?"
-* **Expected Bot Answer Details:**
-  - **Renew Retinol 0.3% Night Serum** ($38) — targeted night serum for fine lines and cellular renewal.
-  - Or **Glow Vitamin C Serum** ($34) for brightening and dullness (noting that Vitamin C is best used in the morning).
-  - Explicitly confirms price is under $40 ($38 and/or $34).
+  > "Can I use the vitamin C serum together with retinol?"
+* **Confirmed Live Bot Response:**
+  - Advises: **"No – Vitamin C and retinol should not be applied together."**
+  - Specifies application timing:
+    - **Glow Vitamin C Serum** in the **morning** (after cleansing, before moisturizer and sunscreen).
+    - **Renew Retinol 0.3% Night Serum** in the **evening**.
+  - Highlights preventing irritation, optimizing results, and always wearing sunscreen during the day.
 
 ---
 
-### 3. Ingredient-Compatibility Question
+### 3. Return Policy Question (Opened Product)
 * **User Prompt:**
-  > "Can I use the Vitamin C serum and the Retinol serum together at the same time?"
-* **Expected Bot Answer Details:**
-  - Advises **NOT** combining them in the same application step.
-  - Explains the proper protocol: Apply **Glow Vitamin C Serum** in the morning with sunscreen (**Daily Shield SPF 50**).
-  - Apply **Renew Retinol 0.3% Night Serum** in the evening.
-  - Mentions avoiding simultaneous irritation or barrier compromise.
+  > "What's your return policy if I already opened a product?"
+* **Confirmed Live Bot Response:**
+  - **Eligibility:** Full refund or exchange if an opened product causes an adverse reaction, irritation, or allergy.
+  - **Time Frame:** Within **30 days of delivery**.
+  - **Process:** Contact support with order number and description/photo for a pre-paid return shipping label.
+  - **Refund:** Processed to original payment method within **5–7 business days** of receipt.
 
 ---
 
-### 4. Policy Question (Opened Product Returns)
+### 4. Gift Advice Question Under Budget
 * **User Prompt:**
-  > "I already opened and tried a moisturizer, but my skin reacted to it. Can I still return it?"
-* **Expected Bot Answer Details:**
-  - Confirms **YES**: Veloura Skin accepts returns on opened products within **30 days** of delivery if they caused an adverse skin reaction or irritation.
-  - Explains the return process: contact support with the order number and reaction details for a prepaid shipping label.
-  - Mentions refund processing takes **5–7 business days** after arrival.
+  > "What would be a good gift under $35?"
+* **Confirmed Live Bot Response:**
+  - Table of curated gifts under $35:
+    - **Overnight Dew Mask** — **$31** (overnight glow treatment)
+    - **Glow Vitamin C Serum** — **$34** (brightens and evens tone)
+    - **Mineral Sheer SPF 30** — **$27** (100% mineral, gentle protection)
+  - All items strictly stay within the $35 budget and match catalog pricing.
 
 ---
 
-### 5. Gift Question
+### 5. Out-of-Scope Fallback & Human Handoff Question
 * **User Prompt:**
-  > "I'm looking for a thoughtful skincare gift for my sister, but I'm not sure of her exact skin type. What do you suggest?"
-* **Expected Bot Answer Details:**
-  - Recommends the **Starter Routine Set** ($62, $76 retail value) because it is universally suitable for all skin types.
-  - Explains it includes full-size **Gentle Cloud Cleanser**, **Cloud Barrier Cream**, and **Daily Shield SPF 50**.
-  - May also suggest the **Overnight Dew Mask** ($31) as a luxurious standalone treat.
+  > "Do you ship to Canada?"
+* **Confirmed Live Bot Response:**
+  - Response: *"I’m not sure, let me get you in touch with the team."*
+  - Automatically triggers the in-widget **"Connect With Our Team"** contact card so the visitor can leave their name and email/phone for direct support.
 
 ---
 
-### 6. Out-of-Scope / Knowledge Base Fallback Question
-* **User Prompt:**
-  > "How much does express shipping cost to Germany, and do I earn loyalty points on international orders?"
-* **Expected Bot Answer Details:**
-  - Intentionally **NOT** in the knowledge base.
-  - Bot responds that it does not have international shipping rates for Germany or loyalty program details.
-  - Gracefully provides the standard handoff: suggests contacting customer support at Veloura Skin for assistance.
-
----
-
-## Recording Tips for Maximum Visual Impact
-1. **Resolution:** Record at 1080p (1920x1080) at 60 FPS with browser zoomed to 100%.
-2. **Smooth Cursor Motion:** Move cursor deliberately without frantic twitches.
-3. **Pacing:** Allow 2–3 seconds after the chatbot finishes typing each response so the viewer can read the output.
-4. **Clean Screen:** Hide bookmarks bar (`Ctrl+Shift+B` in Chrome) and browser developer tools.
+## Screen Recording Tips
+1. **Resolution:** 1080p (1920x1080) at 60 FPS.
+2. **Pacing:** Pause for 2 seconds after each bot message to allow viewers to read the formatted answers.
+3. **Clean Viewport:** Keep browser at 100% zoom and hide personal bookmark bars (`Ctrl+Shift+B`).

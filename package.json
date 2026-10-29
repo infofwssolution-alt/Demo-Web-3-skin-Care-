@@ -7,7 +7,9 @@
     "dev": "vite",
     "start": "vite --port 5500 --strictPort",
     "build": "vite build",
-    "preview": "vite preview --port 5500"
+    "preview": "vite preview --port 5500",
+    "record": "node record/record-demo.js",
+    "build-video": "node record/build-video.js"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.7",
     "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.64.1",
     "tailwindcss": "^4.0.7",
     "vite": "^6.1.0"
   }
